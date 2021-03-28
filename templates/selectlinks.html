@@ -1,0 +1,63 @@
+{% extends "teacher_base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="hero-area slider-area" xmlns="http://www.w3.org/1999/html">
+<div class="hero-height2 hero-bg2 d-flex align-items-center">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="hero-cap">
+<h2>Add useful links</h2>
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="/">Home</a></li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="section-top-border">
+<h3>Following are the Links available:</h3>
+
+<div class="progress-table-wrap">
+<div class="progress-table">
+<div class="table-head">
+<div class="serial ">#</div>
+<div class="country ">URL</div>
+</div>
+{% for link in links %}
+    <form class="needs-validation" method="POST" novalidate>
+          {% csrf_token %}
+<div class="table-row ">
+<div class="serial "></div>
+
+<div class="country form-check">
+
+    <input class="form-check-input" type="checkbox" name="checks[]" value="{{ link }}" id="flexCheckDefault">
+  <label class="form-check-label px-3" for="flexCheckDefault">
+      <a href="{{ link }}" style="color:black;cursor:pointer;" target="_blank">
+        Link
+      </a>
+  </label>
+</div>
+</div>
+{% endfor %}
+
+
+<button type="submit" class="btn btn-primary">Done</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

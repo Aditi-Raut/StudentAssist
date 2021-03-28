@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="hero-area slider-area">
+<div class="hero-height2 hero-bg2 d-flex align-items-center">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="hero-cap">
+<h2>You can upload your videos here</h2>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<section class="popular-directorya-area section-padding fix">
+<div class="container">
+
+
+
+<div class="form-group row">
+<div class="col-xs-2">
+<label for="ex1">Title</label>
+<input class="form-control" id="ex1" type="text">
+</div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-4">
+  <label for="ex1">Tag1</label>
+<input class="form-control" id="ex1" type="text">
+  </div>
+  <div class="col-sm-4">
+      <label for="ex1">Tag2</label>
+<input class="form-control" id="ex1" type="text">
+
+  </div>
+  <div class="col-sm-4">
+      <label for="ex1">Tag3</label>
+<input class="form-control" id="ex1" type="text">
+
+  </div>
+</div>
+
+<div class="form-group"  style="padding-top:20px;">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+
+<h6>Upload Files Here</h6>
+<label class="btn btn-default">Choose File <input type="file" hidden></label>
+
+<h6 style="padding-top:30px;">Upload Videos Here</h6>
+<label class="btn btn-default">Choose Video <input type="file" hidden></label>
+
+
+
+</div>
+</section>
+
+{% endblock %}

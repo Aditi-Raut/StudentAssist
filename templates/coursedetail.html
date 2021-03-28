@@ -1,0 +1,51 @@
+{% extends "teacher_base.html" %}
+{% load static %}
+
+
+{% block content %}
+<head>
+    <style>
+    video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+</style>
+</head>
+<section class="popular-directorya-area section-padding fix">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="section-tittle text-center mb-40">
+                <h2>All Lectures</h2>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="/teacher/createlec/{{ course.id }}"><button class="btn btn-primary" aria-expanded="false">
+                        Upload a lecture
+                    </button></a>
+                    <a href="/teacher/createattendee/{{ course.id  }}"><button class="btn btn-primary" type="button" >
+                        Enroll a student
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    {% for lec in lectures %}
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+        <div class="properties pb-30">
+            <div class="properties-card">
+
+                    <video src="{{ lec.video.url }}" controls></video>
+
+                <div class="properties-caption">
+                    <h3>{{ lec.title }}</h3>
+                    <p>{{ lec.description }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+    {% endblock %}

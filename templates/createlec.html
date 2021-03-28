@@ -1,0 +1,76 @@
+{% extends "teacher_base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="hero-area slider-area">
+    <div class="hero-height2 hero-bg2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap">
+                        <h2>You can upload your lecture here</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="popular-directorya-area section-padding fix">
+    <div class="w-100"></div>
+      {% if error %}
+    <div class="alert alert-danger" role="alert">
+                    {{ error }}
+    </div>
+            {% endif %}
+    <div class="container">
+
+
+ <form class="needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+
+<div class="form-group row">
+<div class="col-xs-2">
+<label for=>Title</label>
+<input class="form-control" name="title" type="text" required>
+</div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-4">
+  <label >Tag1</label>
+<input class="form-control" name="tag1" type="text" required>
+  </div>
+  <div class="col-sm-4">
+      <label >Tag2</label>
+<input class="form-control" name="tag2" type="text" required>
+
+  </div>
+  <div class="col-sm-4">
+      <label >Tag3</label>
+<input class="form-control" name="tag3" type="text" required>
+
+  </div>
+</div>
+
+<div class="form-group"  style="padding-top:20px;">
+    <label >Description</label>
+    <textarea class="form-control" name="description" rows="3" required></textarea>
+  </div>
+
+<h6>Upload Notes Here</h6>
+<label class="btn btn-default">Choose File <input type="file" name="note" hidden required></label>
+
+<h6 style="padding-top:30px;">Upload Lecture Here</h6>
+<label class="btn btn-default">Choose Video <input type="file" name = "video" hidden required></label>
+
+       <hr class="mb-4">
+            <center><button class="btn btn-primary btn-lg btn-block" type="submit">Create</button></center>
+</form>
+
+</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,216 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Student Assist</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icon/favicon.png' %}">
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+  <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header>
+    <div class="header-area">
+  <div class="main-header header-sticky">
+  <div class="container-fluid">
+  <div class="menu-wrapper d-flex align-items-center justify-content-between">
+  <div class="left-content d-flex align-items-center">
+  <div class="logo">
+  <a href="/"><img src="{% static 'img/logo/logo1.png' %}" alt="" width="30%"></a>
+  </div>
+
+  </div>
+
+  <div class="main-menu d-none d-lg-block">
+  <nav>
+  <ul id="navigation">
+  <li><a href="/">Home</a></li>
+
+  <li><a href="/teacher">Courses</a></li>
+
+  <li><a href="/about-us">About</a></li>
+
+    {% if user.is_authenticated %}
+      <li>
+
+        <a href="#" onclick="$('#signOutBtn').click()" class="btn header-btn2">Log Out</a>
+        <form style='display: none;' method="POST" action="/logoutuser">
+                        {% csrf_token %}
+                        <button id="signOutBtn" type="submit">Logout</button>
+        </form>
+      </li>
+    {% else %}
+      <li>
+        <a href="loginuser" class="btn header-btn2">Sign In</a>
+      </li>
+    {% endif %}
+  </ul>
+  </nav>
+  </div>
+  </div>
+
+  <div class="col-12">
+  <div class="mobile_menu d-block d-lg-none"></div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </header>
+  <main>
+{% block content %}{% endblock %}
+
+
+</main>
+  <footer>
+<div class="footer-area footer-padding">
+<div class="footer-wrapper ">
+<div class="container">
+<div class="row d-flex justify-content-between">
+<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+<div class="single-footer-caption mb-50">
+<div class="single-footer-caption mb-30">
+
+<div class="footer-logo mb-25">
+<a href="/"><img src="{% static 'img/logo/logo1.png' %}" width="60%" alt=""></a>
+</div>
+<div class="footer-tittle">
+<div class="footer-pera">
+<p>The automated process starts as soon as your clothes go into the machine.</p>
+</div>
+</div>
+
+<div class="footer-social">
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-pinterest-p"></i></a>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-4 col-sm-5 mt-5 py-3">
+<div class="single-footer-caption mb-50">
+<div class="footer-tittle">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/about-us">About</a></li>
+<li><a href="/teacher">Courses</a></li>
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-bottom-area">
+<div class="container">
+<div class="footer-border">
+<div class="row d-flex align-items-center">
+<div class="col-xl-12 ">
+<div class="footer-copy-right text-center">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+  <div id="back-top">
+    <a class="wrapper" title="Go to Top" href="#">
+    <div class="arrows-container">
+    <div class="arrow arrow-one">
+    </div>
+    <div class="arrow arrow-two">
+    </div>
+    </div>
+    </a>
+  </div>
+
+<!-- JavaScript Bundle with Popper -->
+
+<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+
+<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/jquery.form.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
+<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+</body>
+
+
+</html>

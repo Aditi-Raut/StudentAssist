@@ -1,0 +1,77 @@
+{% extends "teacher_base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="hero-area slider-area">
+    <div class="hero-height2 hero-bg2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap">
+                        <h2>You can upload your lecture here</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="popular-directorya-area section-padding fix">
+    <div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>List of Enrolled Students</h4>
+        <table class="table table-bordered table-light table-hover">
+
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email-id</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for attendee in attendees %}
+    <tr>
+      <th scope="row">{{ attendee.id }}</th>
+      <td>{{ attendee.student.first_name }}</td>
+      <td>{{ attendee.student.email }}</td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+    </div>
+    <div class="col">
+        <div style="align-items: center">
+      <div class="card">
+  <h5 class="card-header">Enroll Students</h5>
+  <div class="card-body">
+    <h5 class="card-title">Providing Access to the Students</h5>
+       <form class="needs-validation" method="POST" novalidate>
+          {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <br>
+    <input type="submit" class="btn btn-primary">
+  </div>
+      </form>
+       <div class="w-100"></div>
+               {% if msg %}
+                <div class="alert alert-danger" role="alert">
+                    {{ msg }}
+                </div>
+            {% endif %}
+
+        </div>
+      </div>
+</div>
+    </div>
+  </div>
+      </div>
+      </div>
+</section>
+{% endblock %}

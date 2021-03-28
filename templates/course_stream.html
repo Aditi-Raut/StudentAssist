@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<head>
+ <style>
+    video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+p{
+font-weight: unset;
+
+}
+</style>
+</head>
+
+<section class="popular-directorya-area">
+<div class="container">
+<div class="row">
+<div class="col-sm-8">
+
+<video controls>
+  <source src="{{ lecture.video.url }}" type="video/mp4">
+
+
+</video>
+<h2>{{ lecture.title }}</h2><hr>
+<p>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Description
+  </a>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+    Discussion
+  </button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+    Lecture Tags
+  </button>
+</p>
+<div class="collapse mb-3" id="collapseExample2">
+  <div class="card card-body">
+    #{{ lecture.tag1 }}, #{{ lecture.tag2 }}, #{{ lecture.tag3 }}
+  </div>
+</div>
+    <div class="collapse mb-3" id="collapseExample">
+  <div class="card card-body">
+    {{ lecture.description }}
+  </div>
+</div>
+<div class="collapse mb-3" id="collapseExample1">
+  <div class="card card-body">
+       <div class="mb-3">
+           <form class="needs-validation" method="POST"  novalidate>
+          {% csrf_token %}
+               <div class="form-group"  style="padding-top:20px;">
+    <label>Add your Question</label>
+    <textarea class="form-control" name="question" rows="3"></textarea>
+               </div>
+               <input class="btn btn-default" type="submit">
+           </form>
+        </div>
+    <div class="mb-3">
+        {% for comment in lecture.comments.all %}
+        <div class="card">
+            <div class="card-body">
+
+
+                <div class="comment">
+                    <div class="date"></div>
+                    <p>{{ comment.student }} <sub>{{ comment.created_date }}</sub></p>
+                    <strong>{{ comment.text|linebreaks }}</strong>
+                </div>
+            </div>
+        </div>
+
+{% empty %}
+    <p>No comments here yet :(</p>
+
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-4">
+<h3>Lecture Resources:</h3>
+    <br>
+<div class="container">
+    <h5>Notes Provided by Teacher:</h5>
+    <a href="{{ lecture.note.url }}" target="_blank"><p><b><u>Notes</u></b></p></a>
+</div>
+<div class="container">
+    <h5>Other useful links suggested by the teacher:</h5>
+    {% for link in links %}
+    <a href="{{ link.links }}" target="_blank"><p><b><u>Link</u></b></p></a>
+    {% endfor %}
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+
+
+
+
+{% endblock %}
