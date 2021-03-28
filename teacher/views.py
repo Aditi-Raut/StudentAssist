@@ -158,6 +158,6 @@ def sendmail(to):
     content = "Hello, Your Teacher has enrolled you into the course."
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login('tsechacks2021@gmail.com', 'Strong@123')
-    server.sendmail('tsechacks2021@gmail.com', to, content)
+    server.login('abc@gmail.com', 'password@123')
+    server.sendmail('abc@gmail.com', to, content)
     server.close()
